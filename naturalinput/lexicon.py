@@ -13,6 +13,7 @@ class Lexicon(object):
       "go": "verb",
       "stop": "verb",
       "kill": "verb",
+      "open": "verb",
       "eat": "verb",
       "the": "stop",
       "in": "stop",
@@ -24,22 +25,21 @@ class Lexicon(object):
       "bear": "noun",
       "princess": "noun",
       "cabinet": "noun"
-      # numbers can be anything from 0 - 9
-      # this exception handled in the scan method
     }
 
   def scan(self, input):    
-    # take input and split by spaces
     words_list = input.lower().split()
-
-    # take resulting list and loop through our lexicon
-    # to see which word is which type
+    return_list = []
 
     for word in words_list:
-      if(self.lexicon[word] != None):
-        return (self.lexicon[word], word)
+      if(word in self.lexicon):
+        return_list.append((self.lexicon[word], word))
+      else:
+        try:
+          int(word)
+        except ValueError:
+          return_list.append(('error', word))
+        else:
+          return_list.append(('number', int(word)))
 
-
-    # numbers either return an int(number) or raise an exception
-
-    # try except int() ? exception > return None 
+    return return_list
