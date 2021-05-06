@@ -24,7 +24,6 @@ class Sentence(object):
         raise ParserException("Invalid entry.")
 
 
-
 class ParserException(Exception):
   def __init__(self, error):
     print(error)

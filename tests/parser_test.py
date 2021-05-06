@@ -7,6 +7,7 @@ def test_parser_no_subject():
 
   test_sentence = lexicon.scan("run north")
   sentence.parse(test_sentence)
+  
   assert sentence.subject == "player"
   assert sentence.verb == "run"
   assert sentence.object == "north"
@@ -16,6 +17,9 @@ def test_parser_with_subject():
   sentence = Sentence()
 
   test_sentence = lexicon.scan("bear eat princess")
+  sentence.parse(test_sentence)
+
+  assert test_sentence == [("noun", "bear"), ("verb", "eat"), ("noun", "princess")]
   assert sentence.subject == "bear"
   assert sentence.verb == "eat"
   assert sentence.object == "princess"
