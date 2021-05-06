@@ -14,6 +14,7 @@ class Lexicon(object):
       "stop": "verb",
       "kill": "verb",
       "open": "verb",
+      "run": "verb",
       "eat": "verb",
       "the": "stop",
       "in": "stop",
